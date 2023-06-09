@@ -1,4 +1,4 @@
-# friviaa
+# Quize 
 
 A new Flutter project.
 
