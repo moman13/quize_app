@@ -18,14 +18,22 @@ class GamePage extends StatelessWidget {
   Widget _buildUI(_deviceHeight) {
     return Builder(builder: (context) {
       _pageProvider = context.watch<GamePageProvider>();
-      return Scaffold(
-        body: SafeArea(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: _deviceHeight! * 0.05),
-            child: _gameUI(_deviceHeight),
+      if (_pageProvider!.questions != null) {
+        return Scaffold(
+          body: SafeArea(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: _deviceHeight! * 0.05),
+              child: _gameUI(_deviceHeight),
+            ),
           ),
-        ),
-      );
+        );
+      } else {
+        return const Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        );
+      }
     });
   }
 
@@ -50,8 +58,8 @@ class GamePage extends StatelessWidget {
   }
 
   Widget _questionText(_deviceHeight) {
-    return const Text(
-      'Test Question 1, Nothing Interested ',
+    return Text(
+      _pageProvider!.getCurrentQuestion(),
       style: TextStyle(
           color: Colors.white, fontSize: 25, fontWeight: FontWeight.w400),
     );
