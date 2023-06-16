@@ -1,4 +1,4 @@
-# Quize 
+# Quize
 
 A new Flutter project.
 
