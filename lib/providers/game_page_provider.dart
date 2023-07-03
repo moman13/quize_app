@@ -29,4 +29,23 @@ class GamePageProvider extends ChangeNotifier {
   String getCurrentQuestion() {
     return questions![currentQuestion]['question'];
   }
+
+  void answerQuestion(String _answer) async {
+    bool isCorrect = questions![currentQuestion]['correct_answer'] == _answer;
+    currentQuestion++;
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: isCorrect ? Colors.green : Colors.red,
+            title: Icon(
+              isCorrect ? Icons.check_circle : Icons.cancel_sharp,
+              color: Colors.white,
+            ),
+          );
+        });
+    await Future.delayed(const Duration(seconds: 1));
+    Navigator.pop(context);
+    notifyListeners();
+  }
 }
