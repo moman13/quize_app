@@ -8,6 +8,7 @@ class GamePageProvider extends ChangeNotifier {
   final int _maxQuestion = 10;
   List? questions;
   int currentQuestion = 1;
+  int _correctCount = 0;
   BuildContext context;
   GamePageProvider({required this.context}) {
     _dio.options.baseUrl = 'https://opentdb.com/api.php';
@@ -32,7 +33,8 @@ class GamePageProvider extends ChangeNotifier {
 
   void answerQuestion(String _answer) async {
     bool isCorrect = questions![currentQuestion]['correct_answer'] == _answer;
-    currentQuestion++;
+
+    _correctCount += isCorrect ? 1 : 0;
     showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -46,6 +48,7 @@ class GamePageProvider extends ChangeNotifier {
         });
     await Future.delayed(const Duration(seconds: 1));
     Navigator.pop(context);
+
     if (currentQuestion == _maxQuestion) {
       endGame();
     } else {
@@ -57,13 +60,13 @@ class GamePageProvider extends ChangeNotifier {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          return const AlertDialog(
+          return AlertDialog(
             backgroundColor: Colors.blue,
             title: Text(
               "End Game! ",
               style: TextStyle(fontSize: 25, color: Colors.white),
             ),
-            content: Text("Score : 0/0"),
+            content: Text("Score : $_correctCount/$_maxQuestion"),
           );
         });
     await Future.delayed(const Duration(seconds: 3));
