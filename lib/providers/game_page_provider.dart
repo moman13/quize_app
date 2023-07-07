@@ -48,7 +48,7 @@ class GamePageProvider extends ChangeNotifier {
         });
     await Future.delayed(const Duration(seconds: 1));
     Navigator.pop(context);
-
+    currentQuestion++;
     if (currentQuestion == _maxQuestion) {
       endGame();
     } else {
