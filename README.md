@@ -1,16 +1,9 @@
 # Quize
+ 
+app for training purposes 
 
-A new Flutter project.
+## ScreenShot
+![Home](https://github.com/moman13/quize_app/assets/35956421/1e476508-d704-4497-a4fa-2a514d16630f)
 
-## Getting Started
+![Question](https://github.com/moman13/quize_app/assets/35956421/22b27705-396c-48be-8abf-306e71904f73)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
